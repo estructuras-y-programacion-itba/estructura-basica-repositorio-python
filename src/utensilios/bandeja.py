@@ -1,2 +1,0 @@
-class Bandeja:
-    pass

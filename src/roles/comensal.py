@@ -1,2 +1,0 @@
-class Comensal:
-    pass

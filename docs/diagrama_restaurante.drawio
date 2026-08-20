@@ -1,0 +1,65 @@
+<mxfile host="app.diagrams.net" modified="2026-08-20T00:00:00.000Z" agent="Codex" version="26.0.14">
+  <diagram id="restaurante" name="Restaurante">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="ingrediente" value="Ingrediente" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;startSize=28;html=1;rounded=0;" vertex="1" parent="1"><mxGeometry x="80" y="60" width="190" height="110" as="geometry" /></mxCell>
+        <mxCell id="ingrediente-attr" value="- _nombre: str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;html=1;" vertex="1" parent="1"><mxGeometry x="80" y="88" width="190" height="38" as="geometry" /></mxCell>
+        <mxCell id="ingrediente-sep" value="" style="shape=line;strokeWidth=1;html=1;" vertex="1" parent="1"><mxGeometry x="80" y="126" width="190" height="0" as="geometry" /></mxCell>
+        <mxCell id="ingrediente-method" value="+ nombre: str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;html=1;" vertex="1" parent="1"><mxGeometry x="80" y="130" width="190" height="36" as="geometry" /></mxCell>
+
+        <mxCell id="arroz" value="Arroz" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;startSize=28;html=1;rounded=0;" vertex="1" parent="1"><mxGeometry x="20" y="250" width="150" height="88" as="geometry" /></mxCell>
+        <mxCell id="arroz-attr" value="—" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=top;spacingTop=4;html=1;fontStyle=2;" vertex="1" parent="1"><mxGeometry x="20" y="278" width="150" height="24" as="geometry" /></mxCell>
+        <mxCell id="arroz-sep" value="" style="shape=line;strokeWidth=1;html=1;" vertex="1" parent="1"><mxGeometry x="20" y="302" width="150" height="0" as="geometry" /></mxCell>
+        <mxCell id="arroz-method" value="+ __init__()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;html=1;" vertex="1" parent="1"><mxGeometry x="20" y="306" width="150" height="28" as="geometry" /></mxCell>
+
+        <mxCell id="pollo" value="Pollo" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;startSize=28;html=1;rounded=0;" vertex="1" parent="1"><mxGeometry x="210" y="250" width="150" height="88" as="geometry" /></mxCell>
+        <mxCell id="pollo-attr" value="—" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=top;spacingTop=4;html=1;fontStyle=2;" vertex="1" parent="1"><mxGeometry x="210" y="278" width="150" height="24" as="geometry" /></mxCell>
+        <mxCell id="pollo-sep" value="" style="shape=line;strokeWidth=1;html=1;" vertex="1" parent="1"><mxGeometry x="210" y="302" width="150" height="0" as="geometry" /></mxCell>
+        <mxCell id="pollo-method" value="+ __init__()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;html=1;" vertex="1" parent="1"><mxGeometry x="210" y="306" width="150" height="28" as="geometry" /></mxCell>
+
+        <mxCell id="plato" value="Plato" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;startSize=28;html=1;rounded=0;" vertex="1" parent="1"><mxGeometry x="440" y="60" width="220" height="132" as="geometry" /></mxCell>
+        <mxCell id="plato-attr" value="- _nombre: str&lt;br&gt;- _ingredientes: tuple[Ingrediente, ...]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;html=1;" vertex="1" parent="1"><mxGeometry x="440" y="88" width="220" height="54" as="geometry" /></mxCell>
+        <mxCell id="plato-sep" value="" style="shape=line;strokeWidth=1;html=1;" vertex="1" parent="1"><mxGeometry x="440" y="142" width="220" height="0" as="geometry" /></mxCell>
+        <mxCell id="plato-method" value="+ nombre: str&lt;br&gt;+ ingredientes: tuple[Ingrediente, ...]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;html=1;" vertex="1" parent="1"><mxGeometry x="440" y="146" width="220" height="42" as="geometry" /></mxCell>
+
+        <mxCell id="olla" value="Olla" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;startSize=28;html=1;rounded=0;" vertex="1" parent="1"><mxGeometry x="440" y="260" width="240" height="150" as="geometry" /></mxCell>
+        <mxCell id="olla-attr" value="- _ingredientes: list[Ingrediente]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;html=1;" vertex="1" parent="1"><mxGeometry x="440" y="288" width="240" height="38" as="geometry" /></mxCell>
+        <mxCell id="olla-sep" value="" style="shape=line;strokeWidth=1;html=1;" vertex="1" parent="1"><mxGeometry x="440" y="326" width="240" height="0" as="geometry" /></mxCell>
+        <mxCell id="olla-method" value="+ ingredientes: tuple[Ingrediente, ...]&lt;br&gt;+ agregar(ingrediente: Ingrediente)&lt;br&gt;+ retirar_ingredientes(): tuple[Ingrediente, ...]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;html=1;" vertex="1" parent="1"><mxGeometry x="440" y="330" width="240" height="76" as="geometry" /></mxCell>
+
+        <mxCell id="cocinero" value="Cocinero" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;startSize=28;html=1;rounded=0;" vertex="1" parent="1"><mxGeometry x="750" y="60" width="240" height="110" as="geometry" /></mxCell>
+        <mxCell id="cocinero-attr" value="—" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=top;spacingTop=4;html=1;fontStyle=2;" vertex="1" parent="1"><mxGeometry x="750" y="88" width="240" height="30" as="geometry" /></mxCell>
+        <mxCell id="cocinero-sep" value="" style="shape=line;strokeWidth=1;html=1;" vertex="1" parent="1"><mxGeometry x="750" y="118" width="240" height="0" as="geometry" /></mxCell>
+        <mxCell id="cocinero-method" value="+ preparar(nombre_plato: str, olla: Olla): Plato" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;html=1;" vertex="1" parent="1"><mxGeometry x="750" y="122" width="240" height="44" as="geometry" /></mxCell>
+
+        <mxCell id="bandeja" value="Bandeja" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;startSize=28;html=1;rounded=0;" vertex="1" parent="1"><mxGeometry x="760" y="260" width="215" height="132" as="geometry" /></mxCell>
+        <mxCell id="bandeja-attr" value="- _plato: Plato | None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;html=1;" vertex="1" parent="1"><mxGeometry x="760" y="288" width="215" height="38" as="geometry" /></mxCell>
+        <mxCell id="bandeja-sep" value="" style="shape=line;strokeWidth=1;html=1;" vertex="1" parent="1"><mxGeometry x="760" y="326" width="215" height="0" as="geometry" /></mxCell>
+        <mxCell id="bandeja-method" value="+ plato: Plato | None&lt;br&gt;+ colocar(plato: Plato)&lt;br&gt;+ retirar(): Plato" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;html=1;" vertex="1" parent="1"><mxGeometry x="760" y="330" width="215" height="58" as="geometry" /></mxCell>
+
+        <mxCell id="camarero" value="Camarero" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;startSize=28;html=1;rounded=0;" vertex="1" parent="1"><mxGeometry x="1060" y="60" width="230" height="110" as="geometry" /></mxCell>
+        <mxCell id="camarero-attr" value="—" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=top;spacingTop=4;html=1;fontStyle=2;" vertex="1" parent="1"><mxGeometry x="1060" y="88" width="230" height="30" as="geometry" /></mxCell>
+        <mxCell id="camarero-sep" value="" style="shape=line;strokeWidth=1;html=1;" vertex="1" parent="1"><mxGeometry x="1060" y="118" width="230" height="0" as="geometry" /></mxCell>
+        <mxCell id="camarero-method" value="+ servir(bandeja: Bandeja, comensal: Comensal)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;html=1;" vertex="1" parent="1"><mxGeometry x="1060" y="122" width="230" height="44" as="geometry" /></mxCell>
+
+        <mxCell id="comensal" value="Comensal" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;startSize=28;html=1;rounded=0;" vertex="1" parent="1"><mxGeometry x="1060" y="260" width="230" height="132" as="geometry" /></mxCell>
+        <mxCell id="comensal-attr" value="- _nombre: str&lt;br&gt;- _plato_servido: Plato | None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;html=1;" vertex="1" parent="1"><mxGeometry x="1060" y="288" width="230" height="54" as="geometry" /></mxCell>
+        <mxCell id="comensal-sep" value="" style="shape=line;strokeWidth=1;html=1;" vertex="1" parent="1"><mxGeometry x="1060" y="342" width="230" height="0" as="geometry" /></mxCell>
+        <mxCell id="comensal-method" value="+ nombre: str&lt;br&gt;+ plato_servido: Plato | None&lt;br&gt;+ recibir(plato: Plato)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;html=1;" vertex="1" parent="1"><mxGeometry x="1060" y="346" width="230" height="42" as="geometry" /></mxCell>
+
+        <mxCell id="herencia-arroz" value="" style="endArrow=block;endFill=0;dashed=1;html=1;" edge="1" parent="1" source="arroz" target="ingrediente"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="herencia-pollo" value="" style="endArrow=block;endFill=0;dashed=1;html=1;" edge="1" parent="1" source="pollo" target="ingrediente"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="olla-ingrediente" value="0..* contiene" style="endArrow=open;html=1;" edge="1" parent="1" source="olla" target="ingrediente"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="cocinero-olla" value="usa" style="endArrow=open;html=1;" edge="1" parent="1" source="cocinero" target="olla"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="cocinero-plato" value="crea" style="endArrow=open;html=1;" edge="1" parent="1" source="cocinero" target="plato"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="bandeja-plato" value="0..1 contiene" style="endArrow=open;html=1;" edge="1" parent="1" source="bandeja" target="plato"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="camarero-bandeja" value="retira de" style="endArrow=open;html=1;" edge="1" parent="1" source="camarero" target="bandeja"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="camarero-comensal" value="sirve a" style="endArrow=open;html=1;" edge="1" parent="1" source="camarero" target="comensal"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="comensal-plato" value="0..1 recibe" style="endArrow=open;html=1;" edge="1" parent="1" source="comensal" target="plato"><mxGeometry relative="1" as="geometry" /></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
