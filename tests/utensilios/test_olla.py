@@ -16,5 +16,6 @@ def test_retirar_ingredientes_entrega_el_contenido_y_vacia_la_olla() -> None:
 
 
 def test_retirar_ingredientes_de_una_olla_vacia_lanza_un_error() -> None:
+    # `pytest.raises` verifica que la operación inválida informe el error esperado.
     with pytest.raises(ValueError, match="olla vacía"):
         Olla().retirar_ingredientes()

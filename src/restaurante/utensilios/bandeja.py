@@ -7,6 +7,7 @@ class Bandeja:
     """Contiene como máximo un plato listo para servir."""
 
     def __init__(self) -> None:
+        # `Plato | None` significa: hay un plato o todavía no hay ninguno.
         self._plato: Plato | None = None
 
     @property

@@ -21,5 +21,6 @@ def main() -> None:
     print(f"{comensal.nombre} recibe {comensal.plato_servido.nombre}.")
 
 
+# Este bloque se ejecuta al correr el módulo, pero no al importarlo desde un test.
 if __name__ == "__main__":
     main()
