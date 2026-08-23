@@ -1,8 +1,41 @@
 # Estructura base para proyectos de POO con Python
 
-Este repositorio es una referencia para organizar el primer proyecto grande de Programación Orientada a Objetos. No es una solución de trabajo práctico: el dominio de restaurante existe solo para mostrar cómo separar módulos, escribir pruebas y ejecutar un proyecto con `uv`.
+Este repositorio es una referencia para organizar el primer proyecto grande de Programación Orientada a Objetos. **No es una solución de trabajo práctico**: el dominio de restaurante existe solo para mostrar cómo separar módulos, escribir pruebas y ejecutar un proyecto con `uv`.
 
-## Primer uso
+Hay dos pistas. Elegí la que corresponde a lo que estés haciendo ahora:
+
+- **Pista A:** ya clonaste *este* repositorio y querés correr el ejemplo.
+- **Pista B:** ya tenés el repositorio de *tu* TP (una carpeta casi vacía) y querés armar el mismo tipo de andamiaje.
+
+En ambos casos, primero instalá `uv`. No hace falta instalar Python a mano: `uv` puede bajar un intérprete compatible. Este ejemplo pide Python 3.12 o posterior.
+
+## Instalar `uv`
+
+Hacé esto **antes** de cualquier otro comando de este README.
+
+**Mac** (si ya tenés Homebrew):
+
+```bash
+brew install uv
+```
+
+**Windows** (PowerShell):
+
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+Si el comando `uv` no aparece, cerrá y volvé a abrir la terminal. Comprobá la instalación:
+
+```bash
+uv --version
+```
+
+Si usás Linux, instalá `uv` con el script oficial de Astral (`curl -LsSf https://astral.sh/uv/install.sh | sh`), no con Homebrew.
+
+## Pista A — Correr este ejemplo
+
+Estás en la carpeta de este repositorio, que **ya tiene** el código del restaurante.
 
 Instalá las dependencias y el paquete local:
 
@@ -22,9 +55,9 @@ Ejecutá las pruebas:
 uv run pytest
 ```
 
-No es necesario activar manualmente un entorno virtual: `uv` crea y administra `.venv` por proyecto.
+No es necesario activar a mano un entorno virtual: `uv` crea y administra `.venv` por proyecto.
 
-## Estructura
+### Cómo queda este repositorio
 
 ```text
 .
@@ -56,7 +89,7 @@ from restaurante.alimentos import Arroz, Pollo
 from restaurante.roles import Camarero, Cocinero
 ```
 
-## Qué muestra el ejemplo
+### Qué muestra el ejemplo
 
 El flujo es deliberadamente pequeño:
 
@@ -68,24 +101,93 @@ El código muestra herencia mínima (`Arroz` y `Pollo` son ingredientes), compos
 
 El ejemplo no prescribe las clases, carpetas ni decisiones de diseño de un trabajo práctico. En cada proyecto, el dominio debe guiar la organización y las responsabilidades.
 
-## Cómo recrear esta estructura en tu proyecto
+## Pista B — Armar tu propio proyecto
 
-Creá el proyecto y elegí un nombre que describa su dominio:
+Estás **adentro** de la carpeta que clonaste para tu TP. No hace falta crear otra carpeta con `uv`.
+
+`mi-proyecto` es un **nombre de ejemplo**. Reemplazalo por un nombre que describa el dominio de *tu* trabajo (no uses `restaurante` salvo que ese sea el problema).
+
+El comando correcto, **desde esa carpeta ya clonada**, es:
 
 ```bash
-uv init --package mi-proyecto
-cd mi-proyecto
+uv init --package --name mi-proyecto
+```
+
+`--name` pone el nombre del proyecto en `pyproject.toml`. No crea un directorio nuevo.
+
+**No** uses `uv init --package mi-proyecto` (sin `--name`). Ese argumento es una *ruta*: `uv` crea una carpeta `mi-proyecto/` adentro de la que ya tenías, y el andamiaje queda anidado.
+
+### Instantánea 1 — después de `uv init`
+
+`uv` conserva lo que ya estaba (`README.md`, `LICENSE`, etc.) y agrega el esqueleto del paquete. El nombre con guiones (`mi-proyecto`) se convierte en un identificador válido para importar: la carpeta queda `src/mi_proyecto/`.
+
+```text
+.
+├── LICENSE
+├── README.md
+├── .gitignore
+├── .python-version
+├── pyproject.toml
+└── src/
+    └── mi_proyecto/
+        └── __init__.py
+```
+
+`uv` puede agregar un script de consola en `pyproject.toml`. Para este curso alcanza con el mismo estilo que el ejemplo: `uv run python -m mi_proyecto.main` (cuando exista `main.py`).
+
+El nombre del proyecto puede contener guiones, como `mi-proyecto`, pero el nombre que se importa desde Python debe ser un identificador válido, como `mi_proyecto`. Si ambos nombres difieren de forma deliberada (por ejemplo, el proyecto se llama como el repo y el paquete se llama como el dominio), configurá el módulo del backend de build como se muestra en este repositorio (`[tool.uv.build-backend]` con `module-name`).
+
+Agregá `pytest` como dependencia de desarrollo:
+
+```bash
 uv add --dev pytest
 ```
 
-Luego, de forma manual:
+### Instantánea 2 — después de `uv add --dev pytest`
+
+Aparecen `uv.lock` y, en tu máquina, un `.venv`. El entorno virtual **no** se sube al repositorio (suele estar en `.gitignore`). El lockfile **sí** se versiona.
+
+```text
+.
+├── LICENSE
+├── README.md
+├── .gitignore
+├── .python-version
+├── pyproject.toml
+├── uv.lock
+└── src/
+    └── mi_proyecto/
+        └── __init__.py
+```
+
+`uv` no crea la carpeta de pruebas. Creala vos, de forma explícita:
+
+```bash
+mkdir tests
+```
+
+### Instantánea 3 — después de `mkdir tests`
+
+```text
+.
+├── LICENSE
+├── README.md
+├── .gitignore
+├── .python-version
+├── pyproject.toml
+├── uv.lock
+├── src/
+│   └── mi_proyecto/
+│       └── __init__.py
+└── tests/
+```
+
+A partir de acá, a mano:
 
 1. Renombrá el paquete creado dentro de `src/` si el dominio lo requiere.
 2. Creá subpaquetes para agrupar responsabilidades relacionadas; cada uno necesita un `__init__.py`.
-3. Creá `tests/` desde el inicio y escribí una prueba por cada comportamiento importante.
+3. Escribí una prueba por cada comportamiento importante. Cuando resulte útil, replicá en `tests/` la organización de `src/`.
 4. Ejecutá `uv run pytest` antes de compartir cambios.
-
-El nombre del proyecto puede contener guiones, como `mi-proyecto`, pero el nombre que se importa desde Python debe ser un identificador válido, como `mi_proyecto`. Si ambos nombres difieren, configurá el módulo del backend de build como se muestra en este repositorio.
 
 ## Dependencias durante el curso
 
@@ -98,11 +200,3 @@ uv add numpy matplotlib
 ```
 
 Ese comando actualiza `pyproject.toml` y `uv.lock`. No agregues dependencias por adelantado: cada biblioteca debe tener un uso concreto en el proyecto.
-
-## Checklist inicial
-
-- [ ] El código de producción está dentro de `src/<nombre_del_paquete>/`.
-- [ ] Las pruebas están en `tests/` y se ejecutan con `uv run pytest`.
-- [ ] Las dependencias están declaradas en `pyproject.toml`.
-- [ ] `uv.lock` está versionado.
-- [ ] Las clases y módulos reflejan el dominio del problema, no el ejemplo de este repositorio.
