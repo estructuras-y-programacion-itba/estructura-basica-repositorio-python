@@ -27,7 +27,9 @@ Con esta arquitectura cada integrante puede apropiarse de un paquete — por eje
 
 Las pruebas en `tests/` siguen la misma idea: quien arma un módulo puede verificarlo sin esperar a que el resto termine el programa entero.
 
-Hay dos pistas. Elegí la que corresponde a lo que estés haciendo ahora:
+---
+
+En este documento hay dos pistas. Elegí la que corresponde a lo que estés haciendo ahora:
 
 - **Pista A:** ya clonaste *este* repositorio y querés correr el ejemplo.
 - **Pista B:** ya tenés el repositorio de *tu* TP (una carpeta casi vacía) y querés armar el mismo tipo de andamiaje.
