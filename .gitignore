@@ -12,3 +12,5 @@ htmlcov/
 # Artefactos de distribución
 build/
 dist/
+
+.idea/
