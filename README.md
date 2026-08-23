@@ -23,9 +23,9 @@ Un **módulo** es, en la práctica, un archivo `.py` que agrupa código relacion
 
 Eso importa especialmente en un TP **grupal**. Van a trabajar sobre **el mismo repositorio, al mismo tiempo**, sin partir el trabajo en líneas paralelas de Git. Si todo el grupo edita el mismo `main.py`, se pisan los cambios: dos personas no pueden escribir cómodas en el mismo archivo.
 
-Con esta arquitectura cada integrante puede apropiarse de un paquete — por ejemplo alguien en `src/mi_proyecto/roles/`, otra persona en `src/mi_proyecto/utensilios/` — e importar el trabajo del resto como ya importan `pi`. Acuerden las interfaces (qué clases y funciones se ven desde afuera) y dejen el detalle adentro del módulo. El `main` del proyecto solo orquesta esas piezas.
+Con esta arquitectura cada integrante puede **apropiarse de un paquete** — por ejemplo alguien trabaja en `src/mi_proyecto/roles/`, otra persona en `src/mi_proyecto/utensilios/`, etc. — e importar el trabajo del resto, como si importaran `pi`. Acuerden las interfaces (qué clases y funciones se ven desde afuera) y dejen el detalle adentro del módulo. El `main` del proyecto solo orquesta esas piezas.
 
-Las pruebas en `tests/` siguen la misma idea: quien arma un módulo puede verificarlo sin esperar a que el resto termine el programa entero.
+Las pruebas en `tests/` siguen la misma idea: quien arma un módulo puede verificarlo sin esperar a que el resto termine el programa entero. Esta idea se llama "test unitario".
 
 ---
 
@@ -34,7 +34,7 @@ En este documento hay dos pistas. Elegí la que corresponde a lo que estés haci
 - **Pista A:** ya clonaste *este* repositorio y querés correr el ejemplo.
 - **Pista B:** ya tenés el repositorio de *tu* TP (una carpeta casi vacía) y querés armar el mismo tipo de andamiaje.
 
-En ambos casos, primero instalá `uv`. No hace falta instalar Python a mano: `uv` puede bajar un intérprete compatible. Este ejemplo pide Python 3.12 o posterior.
+En ambos casos, primero instalá `uv`. Este ejemplo pide Python 3.12 o posterior.
 
 ## Instalar `uv`
 
@@ -62,7 +62,7 @@ Si usás Linux, instalá `uv` con el script oficial de Astral (`curl -LsSf https
 
 ## Pista A — Correr este ejemplo
 
-Estás en la carpeta de este repositorio, que **ya tiene** el código del restaurante.
+Estás en la carpeta de este repositorio, que **ya tiene** el código del restaurante (esto significa, ya clonaste este repositorio).
 
 Instalá las dependencias y el paquete local:
 
@@ -103,11 +103,11 @@ No es necesario activar a mano un entorno virtual: `uv` crea y administra `.venv
 └── uv.lock
 ```
 
-- `src/restaurante/` contiene el código de la aplicación. Cada subpaquete agrupa clases que colaboran dentro de una misma parte del dominio.
-- `tests/` contiene las pruebas automatizadas y replica, cuando resulta útil, la organización de `src/`. Las pruebas no se ubican junto al código de producción.
-- `docs/diagrama_restaurante.drawio` muestra las relaciones del ejemplo. Se abre con diagrams.net / draw.io.
-- `pyproject.toml` define la versión de Python, las dependencias y cómo se instala el paquete.
-- `uv.lock` fija las versiones resueltas. Se versiona junto con el código.
+- `src/restaurante/` es el programa. Cada carpeta adentro (`alimentos`, `roles`, `utensilios`) junta clases que tienen que ver entre sí, para que no esté todo en un solo archivo.
+- `tests/` es donde van las pruebas. No se mezclan con el código que corre el ejemplo: así podés probar una parte sin tener el programa entero armado. Si te ayuda a orientarte, podés repetir acá las mismas carpetas que en `src/`.
+- `docs/diagrama_restaurante.drawio` es un dibujo de cómo se relacionan las clases del ejemplo. Se abre en el navegador con [diagrams.net](https://app.diagrams.net/) (draw.io).
+- `pyproject.toml` es la ficha del proyecto: qué versión de Python hace falta, qué bibliotecas se usan y cómo se llama el paquete. `uv` lo lee cuando corrés `uv sync`.
+- `uv.lock` anota las versiones exactas que `uv` instaló. Si está en el repo, todas las máquinas instalan lo mismo. Este archivo **sí** se versiona (sí se sube al repositorio); la carpeta `.venv` **no**.
 
 Los archivos `__init__.py` señalan qué carpetas son paquetes de Python y permiten exponer una interfaz pública cómoda, por ejemplo:
 
@@ -116,7 +116,7 @@ from restaurante.alimentos import Arroz, Pollo
 from restaurante.roles import Camarero, Cocinero
 ```
 
-### Qué muestra el ejemplo
+### Qué muestra el ejemplo del Restaurante
 
 El flujo es deliberadamente pequeño:
 
@@ -128,7 +128,7 @@ El código muestra herencia mínima (`Arroz` y `Pollo` son ingredientes), compos
 
 El ejemplo no prescribe las clases, carpetas ni decisiones de diseño de un trabajo práctico. En cada proyecto, el dominio debe guiar la organización y las responsabilidades.
 
-## Pista B — Armar tu propio proyecto
+## Pista B — Armar tu propio proyecto con uv
 
 Estás **adentro** de la carpeta que clonaste para tu TP. No hace falta crear otra carpeta con `uv`.
 
@@ -152,9 +152,7 @@ El comando correcto, **desde esa carpeta ya clonada**, es:
 uv init --package --name mi-proyecto
 ```
 
-`--name` pone el nombre del proyecto en `pyproject.toml`. No crea un directorio nuevo.
-
-**No** uses `uv init --package mi-proyecto` (sin `--name`). Ese argumento es una *ruta*: `uv` crea una carpeta `mi-proyecto/` adentro de la que ya tenías, y el andamiaje queda anidado.
+`--name` pone el nombre del proyecto en `pyproject.toml`, sin crear un directorio nuevo.
 
 ### 📷 Estado 2 — después de `uv init`
 
