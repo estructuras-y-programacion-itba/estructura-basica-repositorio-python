@@ -126,6 +126,18 @@ Estás **adentro** de la carpeta que clonaste para tu TP. No hace falta crear ot
 
 `mi-proyecto` es un **nombre de ejemplo**. Reemplazalo por un nombre que describa el dominio de *tu* trabajo (no uses `restaurante` salvo que ese sea el problema).
 
+### 📷 Estado 1 — carpeta clonada, antes de `uv init`
+
+Así se ve el repositorio vacío del TP (como el `modulo` que clonaste): documentación de referencia, licencia y README. Todavía no hay `src/`, `pyproject.toml` ni `tests/`.
+
+```text
+.
+├── docs/
+│   └── diagrama_de_clases.drawio
+├── LICENSE
+└── README.md
+```
+
 El comando correcto, **desde esa carpeta ya clonada**, es:
 
 ```bash
@@ -136,20 +148,22 @@ uv init --package --name mi-proyecto
 
 **No** uses `uv init --package mi-proyecto` (sin `--name`). Ese argumento es una *ruta*: `uv` crea una carpeta `mi-proyecto/` adentro de la que ya tenías, y el andamiaje queda anidado.
 
-### Instantánea 1 — después de `uv init`
+### 📷 Estado 2 — después de `uv init`
 
-`uv` conserva lo que ya estaba (`README.md`, `LICENSE`, etc.) y agrega el esqueleto del paquete. El nombre con guiones (`mi-proyecto`) se convierte en un identificador válido para importar: la carpeta queda `src/mi_proyecto/`.
+`uv` conserva lo que ya estaba (`docs/`, `README.md`, `LICENSE`) y agrega el esqueleto del paquete. El nombre con guiones (`mi-proyecto`) se convierte en un identificador válido para importar: la carpeta queda `src/mi_proyecto/`.
 
 ```text
 .
-├── LICENSE
-├── README.md
+├── docs/
+│   └── diagrama_de_clases.drawio
+├── src/
+│   └── mi_proyecto/
+│       └── __init__.py
 ├── .gitignore
 ├── .python-version
+├── LICENSE
 ├── pyproject.toml
-└── src/
-    └── mi_proyecto/
-        └── __init__.py
+└── README.md
 ```
 
 `uv` puede agregar un script de consola en `pyproject.toml`. Para este curso alcanza con el mismo estilo que el ejemplo: `uv run python -m mi_proyecto.main` (cuando exista `main.py`).
@@ -162,21 +176,23 @@ Agregá `pytest` como dependencia de desarrollo:
 uv add --dev pytest
 ```
 
-### Instantánea 2 — después de `uv add --dev pytest`
+### 📷 Estado 3 — después de `uv add --dev pytest`
 
 Aparecen `uv.lock` y, en tu máquina, un `.venv`. El entorno virtual **no** se sube al repositorio (suele estar en `.gitignore`). El lockfile **sí** se versiona.
 
 ```text
 .
-├── LICENSE
-├── README.md
+├── docs/
+│   └── diagrama_de_clases.drawio
+├── src/
+│   └── mi_proyecto/
+│       └── __init__.py
 ├── .gitignore
 ├── .python-version
+├── LICENSE
 ├── pyproject.toml
-├── uv.lock
-└── src/
-    └── mi_proyecto/
-        └── __init__.py
+├── README.md
+└── uv.lock
 ```
 
 `uv` no crea la carpeta de pruebas. Creala vos, de forma explícita:
@@ -185,20 +201,22 @@ Aparecen `uv.lock` y, en tu máquina, un `.venv`. El entorno virtual **no** se s
 mkdir tests
 ```
 
-### Instantánea 3 — después de `mkdir tests`
+### 📷 Estado 4 — después de `mkdir tests`
 
 ```text
 .
-├── LICENSE
-├── README.md
-├── .gitignore
-├── .python-version
-├── pyproject.toml
-├── uv.lock
+├── docs/
+│   └── diagrama_de_clases.drawio
 ├── src/
 │   └── mi_proyecto/
 │       └── __init__.py
-└── tests/
+├── tests/
+├── .gitignore
+├── .python-version
+├── LICENSE
+├── pyproject.toml
+├── README.md
+└── uv.lock
 ```
 
 A partir de acá, a mano:
