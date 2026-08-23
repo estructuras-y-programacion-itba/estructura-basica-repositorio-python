@@ -2,6 +2,25 @@
 
 Este repositorio es una referencia para organizar el primer proyecto grande de Programación Orientada a Objetos. **No es una solución de trabajo práctico**: el dominio de restaurante existe solo para mostrar cómo separar módulos, escribir pruebas y ejecutar un proyecto con `uv`.
 
+## Motivación
+
+En Python ya usaste módulos sin llamarlos así. Cuando escribís:
+
+```python
+from random import random
+from math import pi
+```
+
+estás pidiendo a Python que busque un archivo (o un paquete) con un nombre — `random`, `math` — y te preste algo que está definido ahí: la función `random` o la constante `pi`. El resto del programa no necesita saber cómo está implementado `math`; solo lo importa y lo usa.
+
+Un **módulo** es, en la práctica, un archivo `.py` que agrupa código relacionado. Un **paquete** es una carpeta con varios módulos (y un `__init__.py`) que se importan con el punto, como `restaurante.alimentos` o `restaurante.roles`. Es el mismo mecanismo que `math`, pero aplicado al dominio de *tu* proyecto: en vez de un solo archivo gigante, el código vive en piezas con un nombre y una responsabilidad.
+
+Eso importa especialmente en un TP **grupal**. Van a trabajar sobre **el mismo repositorio, al mismo tiempo**, sin partir el trabajo en líneas paralelas de Git. Si todo el grupo edita el mismo `main.py`, se pisan los cambios: dos personas no pueden escribir cómodas en el mismo archivo.
+
+Con esta arquitectura cada integrante puede apropiarse de un paquete — por ejemplo alguien en `src/mi_proyecto/roles/`, otra persona en `src/mi_proyecto/utensilios/` — e importar el trabajo del resto como ya importan `pi`. Acuerden las interfaces (qué clases y funciones se ven desde afuera) y dejen el detalle adentro del módulo. El `main` del proyecto solo orquesta esas piezas.
+
+Las pruebas en `tests/` siguen la misma idea: quien arma un módulo puede verificarlo sin esperar a que el resto termine el programa entero.
+
 Hay dos pistas. Elegí la que corresponde a lo que estés haciendo ahora:
 
 - **Pista A:** ya clonaste *este* repositorio y querés correr el ejemplo.
