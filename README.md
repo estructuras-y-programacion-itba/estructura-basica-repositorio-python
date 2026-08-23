@@ -9,6 +9,12 @@ En Python ya usaste módulos sin llamarlos así. Cuando escribís:
 ```python
 from random import random
 from math import pi
+
+# random() es una función: la llamás y te da un float entre 0 y 1.
+probabilidad = random()
+
+# pi es una constante: un número ya calculado. No lleva paréntesis.
+circunferencia = 2 * pi * 3
 ```
 
 estás pidiendo a Python que busque un archivo (o un paquete) con un nombre — `random`, `math` — y te preste algo que está definido ahí: la función `random` o la constante `pi`. El resto del programa no necesita saber cómo está implementado `math`; solo lo importa y lo usa.
