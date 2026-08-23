@@ -26,11 +26,13 @@ probabilidad = random()
 circunferencia = 2 * pi * 3
 ```
 
-estás pidiendo a Python que busque un archivo (o un paquete) con un nombre — `random`, `math` — y te preste algo que está definido ahí: la función `random` o la constante `pi`. El resto del programa no necesita saber cómo está implementado `math`; solo lo importa y lo usa.
+le estás pidiendo a Python que busque un archivo (o un paquete) con un nombre — `random`, `math` — y te preste algo que está definido ahí: la función `random` o la constante `pi`. El resto del programa no necesita saber cómo está implementado `math`; solo lo importa y lo usa.
 
 Un **módulo** es, en la práctica, un archivo `.py` que agrupa código relacionado. Un **paquete** es una carpeta con varios módulos (y un `__init__.py`) que se importan con el punto, como `restaurante.alimentos` o `restaurante.roles`. Es el mismo mecanismo que `math`, pero aplicado al dominio de *tu* proyecto: en vez de un solo archivo gigante, el código vive en piezas con un nombre y una responsabilidad.
 
-Eso importa especialmente en un TP **grupal**. Van a trabajar sobre **el mismo repositorio, al mismo tiempo**, sin partir el trabajo en líneas paralelas de Git. Si todo el grupo edita el mismo `main.py`, se pisan los cambios: dos personas no pueden escribir cómodas en el mismo archivo. Separar el código en paquetes baja esas colisiones; **no reemplaza a Git**. Siguen haciendo falta commits y `push` sobre ese repo compartido.
+Eso importa especialmente en un TP **grupal**. Van a trabajar sobre **el mismo repositorio, al mismo tiempo**, sin partir el trabajo en ramas paralelas de Git. Si todo el grupo edita el mismo `main.py`, se pisan los cambios: dos personas no pueden escribir cómodas en el mismo archivo.
+
+> Separar el código en paquetes baja esas colisiones; **no reemplaza a Git**. Siguen haciendo falta commits y `push` sobre ese repo compartido.
 
 Con esta arquitectura cada integrante puede **llevar un paquete** — por ejemplo alguien lleva `src/mi_proyecto/roles/`, otra persona lleva `src/mi_proyecto/utensilios/`, etc. — e importar el trabajo del resto, como si importaran `pi`. Acuerden las interfaces (qué clases y funciones se ven desde afuera) y dejen el detalle adentro del módulo. El `main` del proyecto solo junta esas piezas y las pone a correr.
 
@@ -45,7 +47,7 @@ En este documento hay dos pistas. Elegí la que corresponde a lo que estés haci
 
 En ambos casos, primero instalá `uv`.
 
-[`uv`](https://docs.astral.sh/uv/) es un programa de consola que arma el entorno del proyecto. Usa el Python que ya tenés en la máquina (este ejemplo pide 3.12 o posterior), baja las bibliotecas que el proyecto necesita y las deja en una carpeta `.venv` propia de este repo. Así todo el grupo corre los mismos comandos (`uv sync`, `uv run …`) y no depende de cómo cada uno tenga Python instalado en la máquina.
+> [`uv`](https://docs.astral.sh/uv/) es un programa de consola que arma el entorno del proyecto. Usa el Python que ya tenés en la máquina (este ejemplo pide 3.12 o posterior), baja las bibliotecas que el proyecto necesita y las deja en una carpeta `.venv` propia de este repo. Así todo el grupo corre los mismos comandos (`uv sync`, `uv run …`) y no depende de cómo cada uno tenga Python instalado en la máquina.
 
 ## Instalar `uv`
 
@@ -203,7 +205,9 @@ uv add --dev pytest
 
 ### Estado 3 — después de `uv add --dev pytest`
 
-Aparecen `uv.lock` y, en tu máquina, un `.venv`. El `.venv` **no** se sube al repositorio (suele estar en `.gitignore`). El `uv.lock` **sí** se sube.
+Aparecen `uv.lock` y, en tu máquina, un `.venv`. El `.venv` **no** se sube al repositorio (suele estar en `.gitignore`). El `uv.lock` **sí** se *versiona*.
+
+> Recordar: Git versiona los archivos que forman parte del repositorio. "Subir" un archivo al repositorio significa incorporarlo a Git para que pueda ser versionado y compartido.
 
 ```text
 .
@@ -220,7 +224,7 @@ Aparecen `uv.lock` y, en tu máquina, un `.venv`. El `.venv` **no** se sube al r
 └── uv.lock
 ```
 
-`uv` no crea la carpeta de pruebas. Creala vos, de forma explícita:
+`uv` no crea la carpeta de pruebas (`tests`). Creala vos, de forma explícita:
 
 ```bash
 mkdir tests
@@ -244,7 +248,7 @@ mkdir tests
 └── uv.lock
 ```
 
-A partir de acá, a mano:
+A partir de acá, hacé lo siguiente "a mano":
 
 1. Renombrá el paquete creado dentro de `src/` si el dominio lo requiere.
 2. Creá subpaquetes para agrupar responsabilidades relacionadas; cada uno necesita un `__init__.py`.
