@@ -1,6 +1,7 @@
 """Ingredientes y preparaciones del restaurante."""
 
-# El punto significa "buscar dentro de este mismo paquete".
+# El punto = "esta misma carpeta" (alimentos/). Traé Arroz desde arroz.py.
+# Así el resto puede hacer: from restaurante.alimentos import Arroz (sin abrir arroz.py).
 from .arroz import Arroz
 from .ingrediente import Ingrediente
 from .plato import Plato

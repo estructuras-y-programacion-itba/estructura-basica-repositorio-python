@@ -1,6 +1,8 @@
 import pytest
 
+# De alimentos, traé Arroz y Pollo (ingredientes de prueba). No hace falta copiar las clases.
 from restaurante.alimentos import Arroz, Pollo
+# De utensilios, traé solo Olla: este archivo prueba la olla, no la bandeja.
 from restaurante.utensilios import Olla
 
 

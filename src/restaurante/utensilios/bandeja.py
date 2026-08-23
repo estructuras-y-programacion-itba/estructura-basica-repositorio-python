@@ -1,5 +1,6 @@
 """Bandeja usada para trasladar un plato al comensal."""
 
+# De alimentos, traé solo Plato. La bandeja no necesita saber cómo está armado un plato por dentro.
 from restaurante.alimentos import Plato
 
 

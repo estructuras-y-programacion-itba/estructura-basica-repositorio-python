@@ -1,7 +1,11 @@
 """Punto de entrada para ejecutar el ejemplo de restaurante."""
 
+# Paquete restaurante, carpeta alimentos: traé las clases Arroz y Pollo a ESTE archivo.
+# Después escribís Arroz(), no restaurante.alimentos.Arroz().
 from restaurante.alimentos import Arroz, Pollo
+# Misma idea: carpeta roles. Traé Camarero, Cocinero y Comensal.
 from restaurante.roles import Camarero, Cocinero, Comensal
+# Carpeta utensilios: traé Bandeja y Olla. Quien programa alimentos no abre estos archivos.
 from restaurante.utensilios import Bandeja, Olla
 
 

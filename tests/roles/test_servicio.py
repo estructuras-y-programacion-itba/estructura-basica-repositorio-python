@@ -1,5 +1,8 @@
+# Igual que en main: de la carpeta alimentos, traé Arroz y Pollo a ESTE test.
 from restaurante.alimentos import Arroz, Pollo
+# De roles, traé las tres clases. El test las usa; no las redefine.
 from restaurante.roles import Camarero, Cocinero, Comensal
+# De utensilios, traé Bandeja y Olla.
 from restaurante.utensilios import Bandeja, Olla
 
 

@@ -1,5 +1,7 @@
 """Ingrediente arroz."""
 
+# El punto = "esta misma carpeta". Traé la clase Ingrediente desde ingrediente.py
+# para que Arroz pueda heredar de ella. No hace falta el camino completo restaurante.alimentos.
 from .ingrediente import Ingrediente
 
 
