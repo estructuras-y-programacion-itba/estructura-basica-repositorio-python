@@ -34,13 +34,15 @@ En este documento hay dos pistas. Elegí la que corresponde a lo que estés haci
 - **Pista A:** ya clonaste *este* repositorio y querés correr el ejemplo.
 - **Pista B:** ya tenés el repositorio de *tu* TP (una carpeta casi vacía) y querés armar el mismo tipo de andamiaje.
 
-En ambos casos, primero instalá `uv`. Este ejemplo pide Python 3.12 o posterior.
+En ambos casos, primero instalá `uv`.
+
+[`uv`](https://docs.astral.sh/uv/) es un programa de consola que arma el entorno del proyecto. Puede instalar Python si hace falta (este ejemplo pide 3.12 o posterior), baja las bibliotecas que el proyecto necesita y las deja en una carpeta `.venv` propia de este repo. Así todo el grupo corre los mismos comandos (`uv sync`, `uv run …`) y no depende de cómo cada uno tenga Python instalado en la máquina.
 
 ## Instalar `uv`
 
 Hacé esto **antes** de cualquier otro comando de este README.
 
-**Mac** (si ya tenés Homebrew):
+**Mac** (si ya tenés [Homebrew](https://brew.sh/)):
 
 ```bash
 brew install uv
@@ -58,7 +60,7 @@ Si el comando `uv` no aparece, cerrá y volvé a abrir la terminal. Comprobá la
 uv --version
 ```
 
-Si usás Linux, instalá `uv` con el script oficial de Astral (`curl -LsSf https://astral.sh/uv/install.sh | sh`), no con Homebrew.
+Si usás Linux, instalá `uv` con el [script oficial de Astral](https://docs.astral.sh/uv/getting-started/installation/) (`curl -LsSf https://astral.sh/uv/install.sh | sh`), no con Homebrew.
 
 ## Pista A — Correr este ejemplo
 
@@ -105,7 +107,7 @@ No es necesario activar a mano un entorno virtual: `uv` crea y administra `.venv
 
 - `src/restaurante/` es el programa. Cada carpeta adentro (`alimentos`, `roles`, `utensilios`) junta clases que tienen que ver entre sí, para que no esté todo en un solo archivo.
 - `tests/` es donde van las pruebas. No se mezclan con el código que corre el ejemplo: así podés probar una parte sin tener el programa entero armado. Si te ayuda a orientarte, podés repetir acá las mismas carpetas que en `src/`.
-- `docs/diagrama_restaurante.drawio` es un dibujo de cómo se relacionan las clases del ejemplo. Se abre en el navegador con [diagrams.net](https://app.diagrams.net/) (draw.io).
+- `docs/diagrama_restaurante.drawio` es un dibujo de cómo se relacionan las clases del ejemplo. Se abre en el navegador con [diagrams.net](https://app.diagrams.net/) ([draw.io](https://www.drawio.com/)).
 - `pyproject.toml` es la ficha del proyecto: qué versión de Python hace falta, qué bibliotecas se usan y cómo se llama el paquete. `uv` lo lee cuando corrés `uv sync`.
 - `uv.lock` anota las versiones exactas que `uv` instaló. Si está en el repo, todas las máquinas instalan lo mismo. Este archivo **sí** se versiona (sí se sube al repositorio); la carpeta `.venv` **no**.
 
@@ -234,9 +236,9 @@ A partir de acá, a mano:
 
 ## Dependencias durante el curso
 
-`pytest` es una dependencia de desarrollo: se usa para verificar el proyecto, pero no forma parte de su ejecución normal.
+[`pytest`](https://docs.pytest.org/) es una dependencia de desarrollo: se usa para verificar el proyecto, pero no forma parte de su ejecución normal.
 
-Cuando la materia lo requiera, agregá las bibliotecas de análisis y visualización al proyecto con:
+Cuando la materia lo requiera, agregá las bibliotecas de análisis y visualización al proyecto ([NumPy](https://numpy.org/), [Matplotlib](https://matplotlib.org/)) con:
 
 ```bash
 uv add numpy matplotlib
