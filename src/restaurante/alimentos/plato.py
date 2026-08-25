@@ -1,5 +1,6 @@
 """Preparaciones que pueden servirse en el restaurante."""
 
+# El punto = "esta misma carpeta". Un Plato está hecho de Ingrediente; los importás de acá al lado.
 from .ingrediente import Ingrediente
 
 

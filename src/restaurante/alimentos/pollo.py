@@ -1,5 +1,6 @@
 """Ingrediente pollo."""
 
+# El punto = "esta misma carpeta". Traé Ingrediente desde ingrediente.py (hermano de este archivo).
 from .ingrediente import Ingrediente
 
 

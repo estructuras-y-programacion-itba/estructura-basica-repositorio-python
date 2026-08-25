@@ -1,5 +1,6 @@
 """Rol que recibe un plato servido."""
 
+# De alimentos, traé Plato. El comensal recibe un plato; no cocina ni arma ingredientes.
 from restaurante.alimentos import Plato
 
 

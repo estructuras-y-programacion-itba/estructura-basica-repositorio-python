@@ -1,5 +1,6 @@
 """Olla para reunir ingredientes antes de cocinar."""
 
+# Paquete alimentos (otra carpeta): traé solo la clase Ingrediente. Después usás Ingrediente, no el camino largo.
 from restaurante.alimentos import Ingrediente
 
 
